@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class Map {
-    String mapLine;
+    String mapLine; //прописать геттеры, чтобы получать через методы get, а эти переменные сделать private?
     int height;
     int width;
     char[][] array;
