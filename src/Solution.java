@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class Solution {
     public static int getResult() {
@@ -19,19 +20,28 @@ public class Solution {
         }
 
         Map map = new Map(mapLine, 4, 4);
+        HashMap<Character, Integer> costs = new HashMap<>();
+        costs.put('S', 5);
+        costs.put('W', 2);
+        costs.put('T', 3);
+        costs.put('P', 1);
 
         //движение по массиву
         int sum = 0;
-        for (int y = 0; y < map.height; y++) { //движение вниз
-//            sum += array[i][0];
-            sum += 1;
+        int y = 0;
+        int x = 0;
+
+        while (y < map.height - 1) { //движение вниз
+            y++;
+            sum += costs.get(map.get(x, y));
+            System.out.println(x + " " + y + " " + costs.get(map.get(x, y)) + " " + sum);
         }
-        for (int x = 0; x < map.width; x++) { //движение налево
-//            sum += array[3][i];
-            sum += 1;
+        while (x < map.width - 1) { //движение налево
+            x++;
+            sum += costs.get(map.get(x, y));
+            System.out.println(x + " " + y + " " + costs.get(map.get(x, y)) + " " + sum);
         }
 
-        //return sum - array[0][0] - array[3][0];
         return sum;
     }
 }
