@@ -19,6 +19,7 @@ public class Solution {
             e.printStackTrace();
         }
 
+        //словарь для стоимости разных типов клеток
         Map map = new Map(mapLine, 4, 4);
         HashMap<Character, Integer> costs = new HashMap<>();
         costs.put('S', 5);
@@ -33,13 +34,13 @@ public class Solution {
 
         while (y < map.height - 1) { //движение вниз
             y++;
-            sum += costs.get(map.get(x, y));
-            System.out.println(x + " " + y + " " + costs.get(map.get(x, y)) + " " + sum);
+            sum += costs.get(map.get(x, y).getCellType());
+            System.out.println(x + " " + y + " " + costs.get(map.get(x, y).getCellType()) + " " + sum);
         }
         while (x < map.width - 1) { //движение налево
             x++;
-            sum += costs.get(map.get(x, y));
-            System.out.println(x + " " + y + " " + costs.get(map.get(x, y)) + " " + sum);
+            sum += costs.get(map.get(x, y).getCellType());
+            System.out.println(x + " " + y + " " + costs.get(map.get(x, y).getCellType()) + " " + sum);
         }
 
         return sum;
