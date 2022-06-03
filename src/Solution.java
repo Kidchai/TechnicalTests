@@ -27,22 +27,8 @@ public class Solution {
         costs.put('T', 3);
         costs.put('P', 1);
 
-        //движение по массиву
-        int sum = 0;
-        int y = 0;
-        int x = 0;
+        map.calculateCosts(map.get(0,0), costs);
 
-        while (y < map.height - 1) { //движение вниз
-            y++;
-            sum += costs.get(map.get(x, y).getCellType());
-            System.out.println(x + " " + y + " " + costs.get(map.get(x, y).getCellType()) + " " + sum);
-        }
-        while (x < map.width - 1) { //движение налево
-            x++;
-            sum += costs.get(map.get(x, y).getCellType());
-            System.out.println(x + " " + y + " " + costs.get(map.get(x, y).getCellType()) + " " + sum);
-        }
-
-        return sum;
+        return map.get(3, 3).getCost();
     }
 }

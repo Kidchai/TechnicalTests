@@ -5,6 +5,7 @@ public class Cell {
     private int y;
     private Map map;
     private char cellType;
+    private int cost = Integer.MAX_VALUE; //константой мб сделать?
 
     public Cell(int x, int y, Map map, char cellType) {
         this.x = x;
@@ -20,6 +21,10 @@ public class Cell {
     public Map getMap() {return map;}
 
     public char getCellType() {return cellType;}
+
+    public int getCost() {return cost;}
+
+    public void setCost(int cost) {this.cost = cost;}
 
     public ArrayList<Cell> getNeighbours() {
         ArrayList<Cell> list = new ArrayList<>();
