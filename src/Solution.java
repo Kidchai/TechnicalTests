@@ -19,6 +19,8 @@ public class Solution {
             e.printStackTrace();
         }
 
+        Validator.checkInput(mapLine);
+
         //словарь для стоимости разных типов клеток
         Map map = new Map(mapLine, 4, 4);
         HashMap<Character, Integer> costs = new HashMap<>();
@@ -42,10 +44,9 @@ public class Solution {
                 costs.put('P', 2);
                 break;
             default:
-                System.out.println("Sorry, it seems like the race of the creature is incorrect. Please, try again.");
-                return 0;
+                System.out.println("Sorry, the race of the creature is incorrect. Please, try again.");
+                throw new IllegalArgumentException();
         }
-
 
         map.calculateCosts(map.get(0,0), costs);
 
