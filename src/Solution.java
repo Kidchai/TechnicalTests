@@ -22,10 +22,30 @@ public class Solution {
         //словарь для стоимости разных типов клеток
         Map map = new Map(mapLine, 4, 4);
         HashMap<Character, Integer> costs = new HashMap<>();
-        costs.put('S', 5);
-        costs.put('W', 2);
-        costs.put('T', 3);
-        costs.put('P', 1);
+        switch (race) {
+            case "Human":
+                costs.put('S', 5);
+                costs.put('W', 2);
+                costs.put('T', 3);
+                costs.put('P', 1);
+                break;
+            case "Swamper":
+                costs.put('S', 2);
+                costs.put('W', 2);
+                costs.put('T', 5);
+                costs.put('P', 2);
+                break;
+            case "Woodman":
+                costs.put('S', 3);
+                costs.put('W', 3);
+                costs.put('T', 2);
+                costs.put('P', 2);
+                break;
+            default:
+                System.out.println("Sorry, it seems like the race of the creature is incorrect. Please, try again.");
+                return 0;
+        }
+
 
         map.calculateCosts(map.get(0,0), costs);
 
