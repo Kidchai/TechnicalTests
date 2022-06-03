@@ -23,6 +23,6 @@ public class Map {
     }
 
     public Cell get(int x, int y) {
-        return array[y][x]; //как вернуть char, зная х и у?
+        return array[y][x];
     }
 }
