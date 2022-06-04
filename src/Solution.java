@@ -9,24 +9,12 @@ import java.util.HashMap;
 
 public class Solution {
     public static int getResult() throws FileNotFoundGameException, IllegalArgumentGameException, IOException {
-        String mapLine = "";
-        String race = "";
-
-        //чтение из файла
-        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\orion\\OneDrive\\Рабочий стол\\input.txt"))) {
-            mapLine = reader.readLine();
-            race = reader.readLine();
-        } catch (FileNotFoundException e) {
-            System.err.println("Sorry, file not found. Please try again.");
-            throw new FileNotFoundGameException();
-        }
-
-        Validator.checkInput(mapLine);
+        Configuration configuration = new Configuration();
 
         //словарь для стоимости разных типов клеток
-        Map map = new Map(mapLine, 4, 4);
+        Map map = new Map(configuration.getMapLine(), 4, 4);
         HashMap<Character, Integer> costs = new HashMap<>();
-        switch (race) {
+        switch (configuration.getRace()) {
             case "Human":
                 costs.put('S', 5);
                 costs.put('W', 2);

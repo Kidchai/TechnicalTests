@@ -1,7 +1,4 @@
 import Exceptions.BaseException;
-import Exceptions.FileNotFoundGameException;
-
-import java.io.FileNotFoundException;
 
 public class Main {
 
