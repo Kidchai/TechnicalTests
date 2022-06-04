@@ -1,3 +1,6 @@
+import Exceptions.FileNotFoundGameException;
+import Exceptions.IllegalArgumentGameException;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -5,7 +8,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class Solution {
-    public static int getResult() {
+    public static int getResult() throws FileNotFoundGameException, IllegalArgumentGameException, IOException {
         String mapLine = "";
         String race = "";
 
@@ -14,9 +17,8 @@ public class Solution {
             mapLine = reader.readLine();
             race = reader.readLine();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Sorry, file not found. Please try again.");
+            throw new FileNotFoundGameException();
         }
 
         Validator.checkInput(mapLine);
@@ -44,8 +46,8 @@ public class Solution {
                 costs.put('P', 2);
                 break;
             default:
-                System.out.println("Sorry, the race of the creature is incorrect. Please, try again.");
-                throw new IllegalArgumentException();
+                System.err.println("Sorry, the race of the creature is incorrect. Please, try again.");
+                throw new IllegalArgumentGameException();
         }
 
         map.calculateCosts(map.get(0,0), costs);

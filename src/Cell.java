@@ -5,7 +5,7 @@ public class Cell {
     private int y;
     private Map map;
     private char cellType;
-    private int cost = Integer.MAX_VALUE; //константой мб сделать?
+    private int cost = Integer.MAX_VALUE;
 
     public Cell(int x, int y, Map map, char cellType) {
         this.x = x;
@@ -17,8 +17,6 @@ public class Cell {
     public int getX() {return x;}
 
     public int getY() {return y;}
-
-    public Map getMap() {return map;}
 
     public char getCellType() {return cellType;}
 
