@@ -34,11 +34,11 @@ public class Cell {
             list.add(this.map.get(x, y - 1));
         }
 
-        if (this.getX() != map.width - 1) {
+        if (this.getX() != map.getWidth() - 1) {
             list.add(this.map.get(x + 1, y));
         }
 
-        if (this.getY() != map.height - 1) {
+        if (this.getY() != map.getHeight() - 1) {
             list.add(this.map.get(x, y + 1));
         }
         return list;

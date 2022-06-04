@@ -15,7 +15,6 @@ public class Configuration {
 
     public String getRace() {return race;}
 
-
     public Configuration() throws FileNotFoundGameException,
                                   IllegalArgumentGameException,
                                   IOException {
