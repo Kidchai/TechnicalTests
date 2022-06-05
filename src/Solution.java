@@ -4,8 +4,8 @@ import Exceptions.IllegalArgumentGameException;
 import java.io.IOException;
 
 public class Solution {
-    public static int getResult() throws FileNotFoundGameException, IllegalArgumentGameException, IOException {
-        Configuration configuration = new Configuration();
+    public static int getResult(String filePath) throws FileNotFoundGameException, IllegalArgumentGameException, IOException {
+        Configuration configuration = new Configuration(filePath);
 
         Map map = new Map(configuration.getMapLine(), 4, 4);
 
