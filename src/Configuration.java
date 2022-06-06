@@ -32,6 +32,12 @@ public class Configuration {
         Validator.checkInput(mapLine);
     }
 
+    public Configuration(String mapLine, String race) throws IllegalArgumentGameException {
+        this.mapLine = mapLine;
+        this.race = race;
+        Validator.checkInput(mapLine);
+    }
+
     public HashMap<Character, Integer> getRaceCosts() throws IllegalArgumentGameException {
         HashMap<Character, Integer> costs = new HashMap<>();
         switch (getRace()) {
