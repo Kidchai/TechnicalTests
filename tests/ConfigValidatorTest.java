@@ -3,7 +3,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class ValidatorTest {
+public class ConfigValidatorTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
@@ -11,19 +11,25 @@ public class ValidatorTest {
     public void testCheckInputForLength() throws IllegalArgumentGameException {
         thrown.expect(IllegalArgumentGameException.class);
         String mapLine = "STWSWTPPTPTTPWP"; //15 symbols
-        Validator.checkInput(mapLine);
+        ConfigValidator.checkMapLine(mapLine);
     }
 
     @Test
     public void testCheckInputForOtherSymbols() throws IllegalArgumentGameException {
         thrown.expect(IllegalArgumentGameException.class);
         String mapLine = "STWSKTPPTPTTPWPY";
-        Validator.checkInput(mapLine);
+        ConfigValidator.checkMapLine(mapLine);
     }
 
     @Test
     public void testCheckInputCorrect() throws IllegalArgumentGameException {
         String mapLine = "STWSWTPPTPTTPWPP";
-        Validator.checkInput(mapLine);
+        ConfigValidator.checkMapLine(mapLine);
+    }
+
+    @Test
+    public void testCheckRaceException() throws IllegalArgumentGameException {
+        thrown.expect(IllegalArgumentGameException.class);
+        ConfigValidator.checkRace("Humann");
     }
 }

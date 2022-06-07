@@ -13,13 +13,6 @@ public class ConfigurationTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void testGetRaceCostsException() throws IllegalArgumentGameException {
-        Configuration configuration = new Configuration("STWSWTPPTPTTPWPP", "Humann");
-        thrown.expect(IllegalArgumentGameException.class);
-        configuration.getRaceCosts();
-    }
-
-    @Test
     public void testGetRaceCostsHuman() throws IllegalArgumentGameException {
         Configuration configuration = new Configuration("STWSWTPPTPTTPWPP", "Human");
         HashMap<Character, Integer> expected = new HashMap<>();

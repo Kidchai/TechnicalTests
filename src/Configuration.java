@@ -10,59 +10,52 @@ public class Configuration {
 
     public String getMapLine() {return mapLine;}
 
-    public String getRace() {return race;}
+    public String getRace() {return race; }
 
     public Configuration(String filePath) throws FileNotFoundGameException,
                                                  IllegalArgumentGameException,
                                                  IOException {
-        if (filePath.length() != 0) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-                mapLine = reader.readLine();
-                race = reader.readLine();
-            } catch (FileNotFoundException e) {
-                System.err.println("Sorry, file not found. Please try again.");
-                throw new FileNotFoundGameException();
-            }
-        } else {
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-                mapLine = reader.readLine();
-                race = reader.readLine();
-            }
+        try (var reader = new BufferedReader(filePath.length() > 0 ? new FileReader(filePath) : new InputStreamReader(System.in))) {
+            setConfig(reader.readLine(), reader.readLine());
+        } catch (FileNotFoundException e) {
+            System.err.println("Sorry, file not found. Please try again.");
+            throw new FileNotFoundGameException();
         }
-        Validator.checkInput(mapLine);
     }
 
     public Configuration(String mapLine, String race) throws IllegalArgumentGameException {
-        this.mapLine = mapLine;
-        this.race = race;
-        Validator.checkInput(mapLine);
+        setConfig(mapLine, race);
     }
 
-    public HashMap<Character, Integer> getRaceCosts() throws IllegalArgumentGameException {
+    public HashMap<Character, Integer> getRaceCosts() {
         HashMap<Character, Integer> costs = new HashMap<>();
         switch (getRace()) {
-            case "Human":
+            case "Human" -> {
                 costs.put('S', 5);
                 costs.put('W', 2);
                 costs.put('T', 3);
                 costs.put('P', 1);
-                break;
-            case "Swamper":
+            }
+            case "Swamper" -> {
                 costs.put('S', 2);
                 costs.put('W', 2);
                 costs.put('T', 5);
                 costs.put('P', 2);
-                break;
-            case "Woodman":
+            }
+            case "Woodman" -> {
                 costs.put('S', 3);
                 costs.put('W', 3);
                 costs.put('T', 2);
                 costs.put('P', 2);
-                break;
-            default:
-                System.err.println("Sorry, the race of the creature is incorrect. Please, try again.");
-                throw new IllegalArgumentGameException();
+            }
         }
         return costs;
+    }
+
+    private void setConfig(String mapLine, String race) throws IllegalArgumentGameException {
+        ConfigValidator.checkMapLine(mapLine);
+        ConfigValidator.checkRace(race);
+        this.mapLine = mapLine;
+        this.race = race;
     }
 }

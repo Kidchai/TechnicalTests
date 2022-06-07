@@ -30,21 +30,11 @@ public class Map {
 
     public void calculateCosts(Cell startCell, HashMap<Character, Integer> costs) {
         startCell.setCost(0);
-        ArrayList<Cell> list = startCell.getNeighbours();
         ArrayList<Cell> newList = new ArrayList<>();
-
-        for (Cell cell: list) {
-            int newCost = (startCell.getCost() + costs.get(cell.getCellType()));
-            if (newCost < cell.getCost()) {
-                cell.setCost(newCost);
-                newList.add(cell);
-            }
-        }
-
-        java.util.Map<Cell, ArrayList<Cell>> cellsNeighbours;
+        newList.add(startCell);
 
         while (!newList.isEmpty()) {
-            cellsNeighbours = new HashMap<>();
+            java.util.Map<Cell, ArrayList<Cell>> cellsNeighbours = new HashMap<>();
 
             for (Cell cell: newList) {
                 cellsNeighbours.put(cell, cell.getNeighbours());
